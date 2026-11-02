@@ -1,1048 +1,693 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shreekrushanaprasad Mane - Portfolio</title>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-        function animateSkills() {
-            const skills = document.querySelectorAll('.skill-item');
-            
-            // Remove animation class from all skills
-            skills.forEach(skill => {
-                skill.classList.remove('animated-skill');
-            });
-            
-            // Randomly select a skill to animate
-            const randomIndex = Math.floor(Math.random() * skills.length);
-            skills[randomIndex].classList.add('animated-skill');
-        }
-        
-        // Run animation initially and then every 3 seconds
-        document.addEventListener('DOMContentLoaded', function() {
-            animateSkills();
-            setInterval(animateSkills, 3000);
-        });
-        </script>
-    <style>
-        .status-message {
-            margin-top: 15px;
-            padding: 10px;
-            border-radius: 4px;
-        }
-        
-        .sending-message {
-            background-color: #f0f0f0;
-            color: #333;
-        }
-        
-        .success-message {
-            background-color: #d4edda;
-            color: #155724;
-        }
-        
-        .error-message {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-    </style>
-    <!-- Add this CSS to your stylesheet -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shreekrushanaprasad Mane · Backend Developer</title>
+<meta name="description" content="Shreekrushanaprasad Mane, Jr. Backend Developer at GrayQuest Finance, Mumbai. Django REST, FastAPI, Kafka, Redis, Celery and AWS.">
+<meta property="og:title" content="Shreekrushanaprasad Mane, Backend Developer">
+<meta property="og:description" content="Backend services in Python with Django REST, FastAPI, Kafka, Redis, Celery and AWS. Based in Mumbai.">
+<meta property="og:image" content="https://shreemane.github.io/Portfolio/image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <style>
-    .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 20px;
-        margin-top: 20px;
-    }
-    
-    @media (max-width: 992px) {
-        .skills-grid {
-            grid-template-columns: repeat(4, 1fr);
-        }
-    }
-    
-    @media (max-width: 768px) {
-        .skills-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-    
-    @media (max-width: 576px) {
-        .skills-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
-    
-    .skill-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        padding: 15px;
-        border-radius: 8px;
-        background-color: rgba(14, 165, 233, 0.05);
-        transition: all 0.3s ease;
-    }
-    
-    .skill-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        background-color: rgba(14, 165, 233, 0.1);
-    }
-    
-    .skill-item img {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 10px;
-    }
-    
-    .skill-item span {
-        font-size: 14px;
-        font-weight: 500;
-    }
-    
-    /* Animation for skills */
-    @keyframes skillPulse {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.08); }
-        100% { transform: scale(1); }
-    }
-    
-    .animated-skill {
-        animation: skillPulse 1.5s infinite;
-    }
-    </style>
-    <style>
-        :root {
-            --primary-color: #0ea5e9;
-            --secondary-color: #0284c7;
-            --dark-bg: #0f172a;
-            --light-bg: #f8fafc;
-            --text-light: #f1f5f9;
-            --text-dark: #1e293b;
-            --border-color: #334155;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        body {
-            background-color: var(--dark-bg);
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        header {
-            padding: 20px 0;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background-color: rgba(15, 23, 42, 0.9);
-            backdrop-filter: blur(5px);
-            z-index: 100;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--primary-color);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-
-        .nav-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-color);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 60px;
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            gap: 50px;
-        }
-
-        .hero-text {
-            flex: 1;
-        }
-
-        .hero-image {
-            flex: 1;
-            text-align: center;
-        }
-
-        .hero-image img {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            border: 5px solid var(--primary-color);
-            object-fit: cover;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .highlight {
-            color: var(--primary-color);
-        }
-
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            color: #94a3b8;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .social-icons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--border-color);
-            color: var(--text-light);
-            transition: all 0.3s;
-        }
-
-        .social-icons a:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-5px);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            border: none;
-            border-radius: 5px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .btn:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-3px);
-        }
-
-        /* Section Styles */
-        section {
-            padding: 100px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 36px;
-            position: relative;
-            display: inline-block;
-            padding-bottom: 10px;
-        }
-
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 70px;
-            height: 3px;
-            background-color: var(--primary-color);
-        }
-
-        /* About Section */
-        .about-content {
-            display: flex;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            color: #94a3b8;
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .skill-tag {
-            background-color: rgba(14, 165, 233, 0.1);
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-tag:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(14, 165, 233, 0.2);
-            background-color: var(--primary-color);
-            color: var(--text-light);
-        }
-
-        .skill-tag::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: all 0.6s ease;
-        }
-
-        .skill-tag:hover::before {
-            left: 100%;
-        }
-
-        /* Experience Section */
-        .timeline {
-            position: relative;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 2px;
-            background-color: var(--border-color);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -1px;
-        }
-
-        .timeline-item {
-            position: relative;
-            width: 50%;
-            padding: 20px 40px;
-        }
-
-        .timeline-item:nth-child(odd) {
-            left: 0;
-        }
-
-        .timeline-item:nth-child(even) {
-            left: 50%;
-        }
-
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            top: 30px;
-            z-index: 1;
-        }
-
-        .timeline-item:nth-child(odd)::after {
-            right: -10px;
-        }
-
-        .timeline-item:nth-child(even)::after {
-            left: -10px;
-        }
-
-        .timeline-content {
-            padding: 20px;
-            background-color: rgba(51, 65, 85, 0.3);
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-        }
-
-        .timeline-content h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .timeline-content h4 {
-            font-weight: 500;
-            margin-bottom: 10px;
-            color: #cbd5e1;
-        }
-
-        .timeline-content .date {
-            color: #94a3b8;
-            font-style: italic;
-            margin-bottom: 15px;
-        }
-
-        .timeline-content ul {
-            list-style-position: inside;
-            color: #94a3b8;
-        }
-
-        .timeline-content ul li {
-            margin-bottom: 5px;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background-color: rgba(51, 65, 85, 0.3);
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s;
-            padding: 20px;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .project-info h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .project-info p {
-            color: #94a3b8;
-            margin-bottom: 15px;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            margin-top: 15px;
-        }
-
-        .project-tag {
-            background-color: rgba(14, 165, 233, 0.1);
-            color: var(--primary-color);
-            padding: 3px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-        }
-
-        /* Education Section */
-        .education-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .education-card {
-            background-color: rgba(51, 65, 85, 0.3);
-            border-radius: 8px;
-            padding: 25px;
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s;
-        }
-
-        .education-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .education-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .education-card h4 {
-            font-weight: 500;
-            margin-bottom: 10px;
-            color: #cbd5e1;
-        }
-
-        .education-card .date {
-            color: #94a3b8;
-            font-style: italic;
-            margin-bottom: 15px;
-        }
-
-        .education-card p {
-            color: #94a3b8;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            display: flex;
-            gap: 50px;
-        }
-
-        .contact-info {
-            flex: 1;
-        }
-
-        .contact-info p {
-            margin-bottom: 20px;
-            color: #94a3b8;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .contact-icon {
-            background-color: rgba(14, 165, 233, 0.1);
-            color: var(--primary-color);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-        }
-
-        .contact-details h4 {
-            color: #cbd5e1;
-            margin-bottom: 5px;
-        }
-
-        .contact-details p {
-            color: #94a3b8;
-            margin-bottom: 0;
-        }
-
-        .contact-form {
-            flex: 1;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            color: #cbd5e1;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 12px;
-            background-color: rgba(51, 65, 85, 0.3);
-            border: 1px solid var(--border-color);
-            border-radius: 5px;
-            color: var(--text-light);
-        }
-
-        textarea.form-control {
-            height: 150px;
-            resize: vertical;
-        }
-
-        /* Footer */
-        footer {
-            background-color: rgba(15, 23, 42, 0.95);
-            padding: 30px 0;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-        }
-
-        footer p {
-            color: #94a3b8;
-        }
-
-        /* Animation for skills */
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .animated-skill {
-            animation: pulse 2s infinite;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .hero-content, .about-content, .contact-content {
-                flex-direction: column;
-            }
-
-            .timeline::after {
-                left: 31px;
-            }
-
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                left: 0;
-            }
-
-            .timeline-item:nth-child(odd)::after,
-            .timeline-item:nth-child(even)::after {
-                left: 15px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 36px;
-            }
-        }
-    </style>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  :root{
+    --paper:#F3F4F1;
+    --surface:#FFFFFF;
+    --ink:#14213D;
+    --ink-soft:#4A5568;
+    --muted:#6B7280;
+    --line:#D9DCE1;
+    --cobalt:#2F3BD9;
+    --cobalt-tint:#E7E9FC;
+    --ok:#1F9D6B;
+    --code-bg:#14213D;
+    --code-ink:#E6E9F2;
+    --code-key:#9DB4FF;
+    --code-str:#8FE3B8;
+    --code-dim:#7E8AA8;
+    --sans:'Schibsted Grotesk',system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --wrap:1120px;
+    --rail:260px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:80px}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--cobalt);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 28px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:rgba(243,244,241,.88);backdrop-filter:blur(10px);border-bottom:1px solid transparent;transition:border-color .2s}
+  header.scrolled{border-bottom-color:var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:20px}
+  .brand{font-weight:800;font-size:19px;text-decoration:none;letter-spacing:-.01em}
+  .brand span{color:var(--cobalt)}
+  .nav-links{display:flex;gap:26px;list-style:none}
+  .nav-links a{text-decoration:none;font-size:15px;font-weight:500;color:var(--ink-soft)}
+  .nav-links a:hover,.nav-links a.active{color:var(--ink)}
+  .nav-cta{font-size:15px;font-weight:600;text-decoration:none;padding:8px 16px;border:1.5px solid var(--ink);border-radius:999px;white-space:nowrap}
+  .nav-cta:hover{background:var(--ink);color:var(--paper)}
+  .menu-btn{display:none;background:none;border:0;font:inherit;font-weight:600;color:var(--ink);cursor:pointer;padding:8px}
+
+  /* Hero */
+  .hero{padding:72px 0 88px}
+  .hero h1{font-size:clamp(30px,7.3vw,100px);line-height:.95;letter-spacing:-.04em;font-weight:800}
+  .hero h1 .last{display:block;color:var(--cobalt)}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:56px;align-items:start;margin-top:48px}
+  .now-line{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:500;color:var(--ink-soft);margin-bottom:18px}
+  .now-line::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(31,157,107,.15)}
+  .hero .lede{font-size:21px;line-height:1.5;color:var(--ink);max-width:30ch}
+  .hero-actions{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{display:inline-flex;align-items:center;gap:8px;font:inherit;font-weight:600;font-size:16px;padding:13px 22px;border-radius:999px;text-decoration:none;cursor:pointer;border:1.5px solid var(--ink);transition:background .15s,color .15s,border-color .15s}
+  .btn svg{width:18px;height:18px}
+  .btn-primary{background:var(--ink);color:var(--paper)}
+  .btn-primary:hover{background:var(--cobalt);border-color:var(--cobalt)}
+  .btn-ghost{background:transparent;color:var(--ink)}
+  .btn-ghost:hover{background:var(--surface)}
+  .socials{display:flex;gap:4px;margin-top:22px}
+  .socials a{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;color:var(--ink-soft)}
+  .socials a:hover{color:var(--cobalt);background:var(--surface)}
+  .socials svg{width:20px;height:20px}
+
+  /* API card */
+  .api{background:var(--code-bg);color:var(--code-ink);border-radius:18px;font-family:var(--mono);font-size:14px;line-height:1.7;box-shadow:0 30px 60px -30px rgba(20,33,61,.55);overflow:hidden}
+  .api-bar{display:flex;align-items:center;gap:10px;padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.08);font-size:13px}
+  .method{color:var(--code-str);font-weight:500}
+  .status{margin-left:auto;display:flex;align-items:center;gap:7px;color:var(--code-str);opacity:0;transition:opacity .3s}
+  .status.on{opacity:1}
+  .status i{width:8px;height:8px;border-radius:50%;background:var(--code-str)}
+  .api pre{padding:20px 22px 24px;white-space:pre;overflow-x:auto;min-height:420px;font:inherit}
+  .api .k{color:var(--code-key)} .api .s{color:var(--code-str)} .api .p{color:var(--code-dim)} .api .n{color:#FFC48A}
+  .caret{display:inline-block;width:8px;height:1.1em;background:var(--code-ink);vertical-align:-3px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .api-meta{display:flex;flex-wrap:wrap;gap:4px 18px;padding:12px 22px;border-top:1px solid rgba(255,255,255,.08);font-size:12px;color:var(--code-dim)}
+
+  /* Impact strip */
+  .impact{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--surface)}
+  .impact .wrap{display:grid;grid-template-columns:repeat(4,1fr)}
+  .metric{padding:34px 28px 32px;border-left:1px solid var(--line)}
+  .metric:first-child{border-left:0;padding-left:0}
+  .metric .fig{font-size:44px;font-weight:800;letter-spacing:-.035em;line-height:1}
+  .metric .fig small{font-size:22px;font-weight:700;letter-spacing:-.01em;color:var(--muted)}
+  .metric p{margin-top:10px;font-size:15px;line-height:1.45;color:var(--ink-soft);max-width:26ch}
+  .bars{margin-top:14px;display:grid;gap:5px;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+  .bar{display:grid;grid-template-columns:44px 1fr;align-items:center;gap:8px}
+  .bar i{display:block;height:6px;border-radius:3px;background:var(--line)}
+  .bar.after i{background:var(--cobalt);width:15%}
+
+  /* Sections */
+  section.block{padding:96px 0;border-top:1px solid var(--line)}
+  section.block.flush{border-top:0}
+  .sec-head{display:grid;grid-template-columns:var(--rail) 1fr;gap:48px;margin-bottom:48px;align-items:baseline}
+  .sec-head h2{font-size:36px;letter-spacing:-.025em;line-height:1.1;font-weight:700}
+  .sec-head p{color:var(--ink-soft);max-width:60ch;font-size:18px}
+  .indent{margin-left:calc(var(--rail) + 48px)}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:var(--rail) 1fr;gap:48px}
+  .portrait{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:62% 62%;border-radius:14px;background:var(--line)}
+  .portrait-cap{font-size:14px;color:var(--muted);margin-top:10px}
+  .about-text p{font-size:19px;line-height:1.65;max-width:62ch}
+  .about-text p+p{margin-top:18px;color:var(--ink-soft)}
+  .stack{margin-top:44px;display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
+  .stack h3{font-size:14px;font-weight:600;color:var(--muted);margin-bottom:8px;line-height:1.3;min-height:2.6em}
+  .stack ul{list-style:none}
+  .stack li{font-size:16px;font-weight:500;padding:5px 0;border-bottom:1px solid var(--line)}
+
+  /* Experience */
+  .job{display:grid;grid-template-columns:var(--rail) 1fr;gap:48px;padding:44px 0;border-top:1px solid var(--line)}
+  .job:first-of-type{border-top:0;padding-top:0}
+  .job-when{font-family:var(--mono);font-size:14px;color:var(--muted);line-height:1.8}
+  .job-when .now{display:inline-flex;align-items:center;gap:6px;color:var(--ok);font-weight:500}
+  .job-when .now::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ok)}
+  .job h3{font-size:28px;letter-spacing:-.02em;line-height:1.2}
+  .job .role{font-size:17px;color:var(--ink-soft);margin-top:4px}
+  .job .summary{margin-top:16px;max-width:64ch;font-size:18px}
+  .themes{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:28px 40px}
+  .theme h4{font-size:16px;font-weight:700;padding-bottom:8px;margin-bottom:10px;border-bottom:2px solid var(--ink);display:flex;justify-content:space-between;gap:12px}
+  .theme h4 span{font-family:var(--mono);font-size:12.5px;font-weight:400;color:var(--muted);align-self:center;text-align:right}
+  .theme ul,.job > div > ul{list-style:none;display:grid;gap:10px}
+  .theme li,.job li{position:relative;padding-left:20px;color:var(--ink-soft);font-size:16px}
+  .theme li::before,.job li::before{content:"";position:absolute;left:0;top:.72em;width:9px;height:1.5px;background:var(--ink)}
+  .job li b{color:var(--ink);font-weight:600}
+  .job > div > ul{margin-top:20px;max-width:68ch}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
+  .chip{font-family:var(--mono);font-size:12.5px;padding:3px 10px;border-radius:6px;background:var(--surface);border:1px solid var(--line);color:var(--ink-soft)}
+
+  /* Systems diagram */
+  .diagram-wrap{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;overflow-x:auto}
+  .diagram{display:block;width:100%;min-width:820px;height:auto;font-family:var(--sans)}
+  .diagram .box{fill:var(--surface);stroke:var(--line);stroke-width:1.5}
+  .diagram .store{fill:var(--cobalt-tint);stroke:none}
+  .diagram .core{fill:var(--ink)}
+  .diagram .t{font-size:15px;font-weight:600;fill:var(--ink)}
+  .diagram .d{font-size:12.5px;fill:var(--muted)}
+  .diagram .core-t{font-size:17px;font-weight:700;fill:#fff}
+  .diagram .core-d{font-size:13px;fill:#B9C1D6}
+  .diagram .w{stroke:var(--ink);stroke-width:1.5;fill:none}
+  .diagram .w.dash{stroke-dasharray:5 5}
+  .diagram .base{fill:var(--paper)}
+  .diagram-note{margin-top:16px;font-size:15px;color:var(--muted);max-width:70ch}
+
+  /* Projects */
+  .projects{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .project{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:32px;display:flex;flex-direction:column}
+  .project-kind{font-size:14px;color:var(--muted);margin-bottom:10px}
+  .project h3{font-size:28px;letter-spacing:-.02em;line-height:1.15}
+  .project .pitch{margin-top:10px;font-size:17px}
+  .project ul{list-style:none;margin-top:16px;display:grid;gap:8px}
+  .project li{position:relative;padding-left:20px;color:var(--ink-soft);font-size:15.5px}
+  .project li::before{content:"";position:absolute;left:0;top:.72em;width:9px;height:1.5px;background:var(--ink)}
+  .project .chips{margin-top:auto;padding-top:24px}
+  .project .chip{background:var(--paper)}
+
+  /* Education */
+  .edu{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  .edu-item .years{font-family:var(--mono);font-size:14px;color:var(--muted)}
+  .edu-item h3{font-size:22px;letter-spacing:-.015em;margin-top:6px;line-height:1.25}
+  .edu-item .school{color:var(--ink-soft);margin-top:4px}
+  .edu-item .grade{margin-top:12px;font-weight:600}
+  .lead-note{margin-top:40px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-soft)}
+  .lead-note b{color:var(--ink)}
+
+  /* Contact */
+  .contact{background:var(--ink);color:var(--paper);border-top:0}
+  .contact .sec-head p{color:#B9C1D6}
+  .contact-grid{display:grid;grid-template-columns:var(--rail) 1fr;gap:48px}
+  .direct{list-style:none;display:grid;gap:18px;align-content:start}
+  .direct small{display:block;font-size:14px;color:#8B95B0}
+  .direct a{text-decoration:none;font-weight:500;font-size:17px;border-bottom:1px solid rgba(243,244,241,.3)}
+  .direct a:hover{border-bottom-color:var(--paper)}
+  form{display:grid;grid-template-columns:1fr 1fr;gap:18px;max-width:680px}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field.full{grid-column:1/-1}
+  .field label{font-size:14px;font-weight:500;color:#B9C1D6}
+  .field input,.field textarea{font:inherit;font-size:16px;color:var(--paper);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:12px 14px}
+  .field input:focus,.field textarea:focus{outline:none;border-color:#9DB4FF;background:rgba(255,255,255,.09)}
+  .field textarea{min-height:140px;resize:vertical}
+  .form-foot{grid-column:1/-1;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .contact .btn-primary{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+  .contact .btn-primary:hover{background:#9DB4FF;border-color:#9DB4FF}
+  .contact .btn-primary:disabled{opacity:.6;cursor:wait}
+  .form-status{font-size:15px}
+  .form-status.ok{color:var(--code-str)}
+  .form-status.err{color:#FFB4A8}
+
+  footer{background:var(--ink);color:#8B95B0;font-size:14px;padding:28px 0;border-top:1px solid rgba(255,255,255,.1)}
+  footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer a{text-decoration:none}
+  footer a:hover{color:var(--paper)}
+
+  /* Responsive */
+  @media (max-width:1040px){
+    .nav-links{gap:18px}
+    .stack{grid-template-columns:repeat(3,1fr)}
+  }
+  @media (max-width:960px){
+    .hero-grid{grid-template-columns:1fr;gap:44px}
+    .hero .lede{max-width:40ch}
+    .sec-head,.about-grid,.job,.contact-grid{grid-template-columns:1fr;gap:20px}
+    .indent{margin-left:0}
+    .portrait{max-width:280px}
+    .impact .wrap{grid-template-columns:1fr 1fr}
+    .metric{border-left:0;padding-left:0;border-top:1px solid var(--line)}
+    .metric:nth-child(-n+2){border-top:0}
+    .metric:nth-child(even){padding-left:24px;border-left:1px solid var(--line)}
+    .themes,.projects,.edu{grid-template-columns:1fr}
+  }
+  @media (max-width:720px){
+    body{font-size:16px}
+    .wrap{padding:0 20px}
+    .menu-btn{display:block}
+    .nav-cta{display:none}
+    .nav-links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;gap:0;background:var(--paper);border-bottom:1px solid var(--line);padding:8px 20px 16px}
+    .nav-links.open{display:flex}
+    .nav-links a{display:block;padding:12px 0;font-size:17px}
+    .hero{padding:40px 0 64px}
+    .hero .lede{font-size:19px}
+    section.block{padding:72px 0}
+    .api{font-size:12px}
+    .api pre{min-height:0}
+    .metric .fig{font-size:34px}
+    .stack{grid-template-columns:1fr 1fr}
+    .diagram-wrap{padding:16px}
+    form{grid-template-columns:1fr}
+    .about-text p{font-size:17px}
+    .project{padding:24px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .caret{animation:none}
+  }
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">Shree.</div>
-                <div class="nav-links">
-                    <a href="#home">Home</a>
-                    <a href="#about">About</a>
-                    <a href="#experience">Experience</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#education">Education</a>
-                    <a href="#contact">Contact</a>
-                </div>
-            </nav>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Hi, I'm <span class="highlight">Shreekrushanaprasad Mane</span></h1>
-                    <p>Backend Developer with expertise in Python, Java, and SQL. Passionate about creating efficient and scalable solutions.</p>
-                    <a href="#contact" class="btn">Get In Touch</a>
-                    <div class="social-icons">
-                        <a href="mailto:shreevmane@gmail.com"><i class="fas fa-envelope"></i></a>
-                        <a href="https://linkedin.com/in/shree-mane" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/shreemane" target="_blank"><i class="fab fa-github"></i></a>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <img src="image.png" alt="Shreekrushanaprasad Mane">
-                </div>
-            </div>
-        </div>
-    </section>
+<header id="top">
+  <div class="wrap nav">
+    <a href="#home" class="brand">shree<span>.</span>mane</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#systems">Systems</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="SDE1_Shreekrushanaprasad_Mane%20(1)%20(1).pdf" class="nav-cta" download="Shreekrushanaprasad_Mane_Resume.pdf">Download resume</a>
+  </div>
+</header>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <div class="section-title">
-                <h2>About Me</h2>
-            </div>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I am a Backend Developer with experience in building scalable and efficient services using Python, Java, and SQL. Currently pursuing my Master's in Computer Applications, I have hands-on experience with frameworks like Django REST Framework and Spring Boot.</p>
-                    <p>My professional journey includes working at GrayQuest Finance as a Backend Intern, where I've optimized backend services and implemented asynchronous tasks. I'm passionate about creating robust solutions that solve real-world problems.</p>
-                    <h3>Technical Skills</h3>
-                    <div class="skills-grid" id="skills-container">
-                        <div class="skill-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
-                            <span>Python</span>
-                        </div>
-                        <div class="skill-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
-                            <span>Java</span>
-                        </div>
-                        <div class="skill-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL">
-                            <span>SQL</span>
-                        </div>
-                        <div class="skill-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="Spring Boot">
-                            <span>Spring Boot</span>
-                        </div>
-                        <div class="skill-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg" alt="Django">
-                            <span>Django</span>
-                        </div>
-                        <div class="skill-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original-wordmark.svg" alt="MySQL">
-                            <span>MySQL</span>
-                        </div>
-                        <div class="skill-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB">
-                            <span>MongoDB</span>
-                        </div>
-                        <div class="skill-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis">
-                            <span>Redis</span>
-                        </div>
-                        <div class="skill-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlalchemy/sqlalchemy-original.svg" alt="SQL-Alchemy">
-                            <span>SQL-Alchemy</span>
-                        </div>
-                        <div class="skill-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
-                            <span>Git</span>
-                        </div>
-                        <div class="skill-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="Github">
-                            <span>Github</span>
-                        </div>
-                        <div class="skill-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg" alt="Jenkins">
-                            <span>Jenkins</span>
-                        </div>
-                        <div class="skill-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker">
-                            <span>Docker</span>
-                        </div>
-                        <div class="skill-item">
-                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jira/jira-original.svg" alt="Jira">
-                            <span>Jira</span>
-                        </div>
-                        <div class="skill-item">
-                            <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" alt="Postman">
-                            <span>Postman</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<main>
+<!-- Hero -->
+<section id="home" class="hero">
+  <div class="wrap">
+    <h1>Shreekrushanaprasad <span class="last">Mane</span></h1>
+  </div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="now-line">Jr. Backend Developer at GrayQuest Finance</div>
+      <p class="lede">I build the APIs, queues and caches behind a fintech platform in Mumbai, and I care most about making them fast and keeping them up.</p>
+      <div class="hero-actions">
+        <a href="#experience" class="btn btn-primary">See my work</a>
+        <a href="SDE1_Shreekrushanaprasad_Mane%20(1)%20(1).pdf" class="btn btn-ghost" download="Shreekrushanaprasad_Mane_Resume.pdf">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 4v11m0 0-4.5-4.5M12 15l4.5-4.5M5 19h14"/></svg>
+          Resume (PDF)
+        </a>
+      </div>
+      <div class="socials">
+        <a href="mailto:shreevmane@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        </a>
+        <a href="https://linkedin.com/in/shree-mane" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4v11H3v-11Zm6.5 0h3.8v1.5h.06c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1v5.45h-4v-4.83c0-1.15-.02-2.63-1.6-2.63-1.6 0-1.85 1.25-1.85 2.55v4.91h-4v-11Z"/></svg>
+        </a>
+        <a href="https://github.com/shreemane" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+        </a>
+      </div>
+    </div>
 
-    <!-- Experience Section -->
-    <section id="experience" class="experience">
-        <div class="container">
-            <div class="section-title">
-                <h2>My Experience</h2>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>GrayQuest Finance</h3>
-                        <h4>SDE - Backend Intern</h4>
-                        <div class="date">January 2025 – Current | Mumbai, Maharashtra</div>
-                        <ul>
-                            <li>Developed and optimized backend services for FMS, Admin, Customer, Institute, Notification modules using Django REST Framework, SQLAlchemy, and Celery, improving system efficiency by 25%.</li>
-                            <li>Implemented asynchronous tasks using Celery for operations like email/SMS dispatch and third-party API integrations, reducing response latency by 30%.</li>
-                            <li>Collaborated with Product, QA, and frontend teams to develop, test, and deploy features across Dev, UAT, Stage, Preprod, and Prod environments, ensuring 99.9% uptime.</li>
-                            <li>Built Python scripts to support bulk data entry and updates, enabling the operations team to handle large-scale CRUD tasks 80% faster.</li>
-                            <li>Monitored logs and performance using Prometheus and Grafana, leading to a 50% reduction in critical downtime incidents.</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <h3>Sunrise Infotech Pvt Ltd</h3>
-                        <h4>SDE - Intern</h4>
-                        <div class="date">April 2022 – December 2022 | Mumbai, Maharashtra</div>
-                        <ul>
-                            <li>Developed and maintained backend services using Java and Spring Boot, building RESTful APIs for tracking and logistics modules.</li>
-                            <li>Worked on a notification system to send alerts via email and SMS, ensuring timely communication with users.</li>
-                            <li>Optimized MySQL queries, resulting in up to 25% faster API response times and improved database performance.</li>
-                            <li>Wrote and maintained internal technical documentation for APIs and workflows.</li>
-                            <li>Collaborated with cross-functional teams in an agile environment to support feature development and bug fixes.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="api" aria-label="Profile summary shown as an API response">
+      <div class="api-bar">
+        <span class="method">GET</span><span>/api/v1/engineers/shree</span>
+        <span class="status" id="api-status"><i></i>200 OK</span>
+      </div>
+<pre id="api-body" aria-hidden="true"></pre>
+      <div class="api-meta"><span>content-type: application/json</span><span>x-cache: HIT</span><span id="api-time"></span></div>
+    </div>
+  </div>
+</section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <div class="section-title">
-                <h2>My Projects</h2>
-            </div>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-info">
-                        <h3>TaskMate - Web App</h3>
-                        <p>A full-stack task management web application allowing users to create, update, and track daily tasks. Built RESTful APIs using Django REST Framework for task operations and user authentication via JWT.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Python</span>
-                            <span class="project-tag">Django</span>
-                            <span class="project-tag">HTML</span>
-                            <span class="project-tag">CSS</span>
-                            <span class="project-tag">JavaScript</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-info">
-                        <h3>Discover - App</h3>
-                        <p>A college-level social media platform enabling students to post blogs, photos, and videos related to campus events. Implemented with modular architecture supporting content creation, review, and approval.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">Android</span>
-                            <span class="project-tag">Java</span>
-                            <span class="project-tag">Firebase</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- Impact -->
+<section class="impact" aria-label="Impact at GrayQuest Finance">
+  <div class="wrap">
+    <div class="metric">
+      <div class="fig">50+</div>
+      <p>REST APIs built and owned in the Admin backend</p>
+    </div>
+    <div class="metric">
+      <div class="fig">120<small>ms</small></div>
+      <p>response time, down from 800 ms after caching and query work</p>
+      <div class="bars" aria-hidden="true">
+        <div class="bar"><span>before</span><i></i></div>
+        <div class="bar after"><span>after</span><i></i></div>
+      </div>
+    </div>
+    <div class="metric">
+      <div class="fig">80%</div>
+      <p>faster bulk operations after moving them onto Kafka</p>
+    </div>
+    <div class="metric">
+      <div class="fig">99.5%</div>
+      <p>uptime on third-party integrations, with half as many critical incidents</p>
+    </div>
+  </div>
+</section>
 
-    <!-- Education Section -->
-    <section id="education" class="education">
-        <div class="container">
-            <div class="section-title">
-                <h2>Education</h2>
-            </div>
-            <div class="education-grid">
-                <div class="education-card">
-                    <h3>Vivekanand Education Society's Institute of Technology</h3>
-                    <h4>Master of Computer Applications</h4>
-                    <div class="date">2023 – 2025 | Chembur, Mumbai</div>
-                    <p>CGPI: 8.09</p>
-                </div>
-                <div class="education-card">
-                    <h3>Vikas College of Arts, Commerce and Science</h3>
-                    <h4>B.Sc. Information Technology</h4>
-                    <div class="date">2019 – 2022 | Vikhroli, Mumbai</div>
-                    <p>CGPA: 8.57</p>
-                </div>
-            </div>
-            <div style="margin-top: 40px; text-align: center;">
-                <h3 style="margin-bottom: 20px;">Leadership / Extracurricular</h3>
-                <p style="color: #94a3b8;">Student Placement Coordinator, VESIT</p>
-            </div>
-        </div>
-    </section>
+<!-- About -->
+<section id="about" class="block flush">
+  <div class="wrap">
+    <div class="sec-head"><h2>About</h2><p></p></div>
+    <div class="about-grid">
+      <figure>
+        <img class="portrait" src="image.png" alt="Shreekrushanaprasad Mane at the GrayQuest office in Mumbai">
+        <figcaption class="portrait-cap">At the GrayQuest office, Mumbai</figcaption>
+      </figure>
+      <div class="about-text">
+        <p>I'm a backend developer who likes the unglamorous parts of software: the query that stops being the slow one, the background job that quietly retries, the service that turns a manual daily chore into something nobody has to think about.</p>
+        <p>At GrayQuest Finance I own the Admin backend and several other repositories. I've moved bulk work onto Kafka and Celery, added Redis caching and rate limiting, helped break a legacy monolith into FastAPI and Django services, and set up OpenSearch audit logging. I hold a Master of Computer Applications from VESIT, Mumbai.</p>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Contact Me</h2>
-            </div>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <p>Feel free to reach out to me for any opportunities or collaborations. I'm always open to discussing new projects and ideas.</p>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Email</h4>
-                            <p>shreevmane@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>Phone</h4>
-                            <p>+91 8454074672</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fab fa-linkedin-in"></i>
-                        </div>
-                        <div class="contact-details">
-                            <h4>LinkedIn</h4>
-                            <p>linkedin.com/in/shree-mane</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Your Name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Your Email">
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" class="form-control" id="subject" placeholder="Subject">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea class="form-control" id="message" placeholder="Your Message"></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
-            </div>
+        <div class="stack">
+          <div><h3>Languages</h3><ul><li>Python</li><li>SQL</li></ul></div>
+          <div><h3>Frameworks</h3><ul><li>Django REST</li><li>FastAPI</li><li>SQLAlchemy</li><li>Celery</li></ul></div>
+          <div><h3>Data and messaging</h3><ul><li>MySQL</li><li>MongoDB</li><li>Redis</li><li>Kafka</li><li>OpenSearch</li></ul></div>
+          <div><h3>Cloud and DevOps</h3><ul><li>AWS EKS</li><li>AWS EC2, S3</li><li>Docker</li><li>Jenkins</li><li>Git, GitHub</li></ul></div>
+          <div><h3>Tools</h3><ul><li>Prometheus</li><li>Grafana</li><li>Postman</li><li>Jira</li></ul></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Shreekrushanaprasad Mane. All Rights Reserved.</p>
+<!-- Experience -->
+<section id="experience" class="block">
+  <div class="wrap">
+    <div class="sec-head"><h2>Experience</h2><p>Most of my work is at GrayQuest Finance, where I build and run backend services for an education-fee financing platform.</p></div>
+
+    <article class="job">
+      <div class="job-when">Jan 2025 – Present<br><span class="now">Current role</span><br>Mumbai</div>
+      <div>
+        <h3>GrayQuest Finance</h3>
+        <div class="role">Jr. Backend Developer</div>
+        <p class="summary">I own the Admin backend and several repositories, and work across async processing, performance, service architecture and observability.</p>
+
+        <div class="themes">
+          <div class="theme">
+            <h4>APIs and ownership <span>DRF, SQLAlchemy</span></h4>
+            <ul>
+              <li>Built and own the Admin backend: <b>50+ REST APIs</b> with JWT and API-key authentication between services.</li>
+              <li>Shipped an auto lead assignment service that routes leads end to end, replacing a manual daily process.</li>
+            </ul>
+          </div>
+          <div class="theme">
+            <h4>Async and messaging <span>Kafka, Celery, SQS</span></h4>
+            <ul>
+              <li>Built Kafka producers and consumers for bulk data APIs, ending daily manual script runs and making large jobs <b>80% faster</b>.</li>
+              <li>Configured Celery with AWS SQS for scheduled and background jobs, taking long-running work out of the request cycle.</li>
+            </ul>
+          </div>
+          <div class="theme">
+            <h4>Performance <span>Redis</span></h4>
+            <ul>
+              <li>Added Redis caching, rate limiting and request throttling, and tuned queries to cut response time from <b>800 ms to 120 ms</b>.</li>
+            </ul>
+          </div>
+          <div class="theme">
+            <h4>Architecture <span>FastAPI, Django</span></h4>
+            <ul>
+              <li>Refactored a legacy monolith into FastAPI and Django microservices for better concurrency and horizontal scaling.</li>
+              <li>Integrated third-party APIs with webhooks and circuit breakers, keeping <b>99.5% uptime</b>.</li>
+            </ul>
+          </div>
+          <div class="theme">
+            <h4>Observability <span>OpenSearch, Grafana</span></h4>
+            <ul>
+              <li>Researched and rolled out OpenSearch for centralized audit logging, with a dashboard for real-time audit trails.</li>
+              <li>Monitored system health with Prometheus and Grafana, cutting critical downtime incidents by <b>50%</b>.</li>
+            </ul>
+          </div>
+          <div class="theme">
+            <h4>Shared tooling <span>Python</span></h4>
+            <ul>
+              <li>Built an internal Python audit library that standardizes audit calls, so teams make fewer redundant service calls and log consistently.</li>
+            </ul>
+          </div>
         </div>
-    </footer>
+      </div>
+    </article>
 
-    <script>
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-    <script type="text/javascript">
-        (function() {
-            // Initialize EmailJS with your user ID
-            // You'll need to sign up at https://www.emailjs.com/ (free tier available)
-            emailjs.init("yxp0oOmFZo3tu76iT"); // Replace with your actual EmailJS user ID
-            
-            document.querySelector('form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Get form values
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const subject = document.getElementById('subject').value;
-                const message = document.getElementById('message').value;
-                
-                // Validate form inputs
-                if (!name || !email || !subject || !message) {
-                    alert('Please fill in all fields.');
-                    return;
-                }
-                
-                // Validate email format
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                if (!emailRegex.test(email)) {
-                    alert('Please enter a valid email address.');
-                    return;
-                }
-                
-                // Create a container for status messages
-                let statusMessageContainer = document.querySelector('.status-message');
-                if (!statusMessageContainer) {
-                    statusMessageContainer = document.createElement('div');
-                    statusMessageContainer.className = 'status-message';
-                    document.querySelector('.form-group:last-of-type').after(statusMessageContainer);
-                }
-                
-                // Show loading message
-                statusMessageContainer.innerHTML = '<p class="sending-message">Sending message, please wait...</p>';
-                statusMessageContainer.style.display = 'block';
-                
-                // Prepare template parameters
-                const templateParams = {
-                    from_name: name,
-                    from_email: email,
-                    subject: subject,
-                    message: message
-                };
-                
-                // Send email using EmailJS
-                emailjs.send(
-                    'Portfolio',  // Replace with your EmailJS service ID
-                    'template_p1pk99m', // Replace with your EmailJS template ID
-                    templateParams
-                )
-                .then(function(response) {
-                    console.log('SUCCESS!', response.status, response.text);
-                    // Success message
-                    statusMessageContainer.innerHTML = '<p class="success-message">Message sent successfully! I will get back to you soon.</p>';
-                    
-                    // Reset form
-                    document.querySelector('form').reset();
-                    
-                    // Clear success message after 5 seconds
-                    setTimeout(() => {
-                        statusMessageContainer.style.display = 'none';
-                    }, 5000);
-                }, function(error) {
-                    console.log('FAILED...', error);
-                    // Error message
-                    statusMessageContainer.innerHTML = '<p class="error-message">Failed to send message. Please try again later or email me directly.</p>';
-                });
-            });
-        })();
-    </script>
+    <article class="job">
+      <div class="job-when">Apr 2022 – Dec 2022<br>Mumbai</div>
+      <div>
+        <h3>Sunrise Infotech Pvt Ltd</h3>
+        <div class="role">SDE Intern</div>
+        <ul>
+          <li>Worked on a notification system that alerts users by email and SMS.</li>
+          <li>Optimized MySQL queries for up to <b>25% faster</b> API responses.</li>
+          <li>Worked with cross-functional teams in an agile setup on features and bug fixes.</li>
+        </ul>
+        <div class="chips"><span class="chip">MySQL</span><span class="chip">REST APIs</span><span class="chip">Email/SMS</span><span class="chip">Agile</span></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Systems -->
+<section id="systems" class="block">
+  <div class="wrap">
+    <div class="sec-head"><h2>The systems I work on</h2><p>A simplified map of the backend I build at GrayQuest and where each tool fits.</p></div>
+    <div class="diagram-wrap">
+      <svg class="diagram" viewBox="0 0 1000 492" role="img" aria-labelledby="dg-title dg-desc">
+        <title id="dg-title">Backend architecture</title>
+        <desc id="dg-desc">Admin and customer apps and partner services call Django REST and FastAPI microservices secured with JWT and API keys. The services read from a Redis cache and MySQL, publish bulk jobs to Kafka for consumers, queue background jobs to Celery workers through AWS SQS, call third-party APIs through circuit breakers, and write audit events to OpenSearch. Everything runs in Docker on AWS EKS, built by Jenkins and monitored with Prometheus and Grafana.</desc>
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#14213D"/></marker>
+        </defs>
+
+        <!-- callers -->
+        <rect class="box" x="10" y="70" width="170" height="72" rx="10"/>
+        <text class="t" x="26" y="100">Admin and</text><text class="t" x="26" y="120">customer apps</text>
+        <rect class="box" x="10" y="250" width="170" height="72" rx="10"/>
+        <text class="t" x="26" y="280">Partner and</text><text class="t" x="26" y="300">internal services</text>
+
+        <!-- core -->
+        <rect class="core" x="240" y="40" width="240" height="320" rx="14"/>
+        <text class="core-t" x="262" y="80">Django REST and</text>
+        <text class="core-t" x="262" y="102">FastAPI services</text>
+        <text class="core-d" x="262" y="146">JWT and API-key auth</text>
+        <text class="core-d" x="262" y="172">Rate limiting, throttling</text>
+        <text class="core-d" x="262" y="198">SQLAlchemy models</text>
+        <text class="core-d" x="262" y="224">Webhooks, circuit breakers</text>
+        <text class="core-d" x="262" y="250">Internal audit library</text>
+        <text class="core-d" x="262" y="276">Auto lead assignment</text>
+
+        <!-- stores -->
+        <rect class="store" x="545" y="40" width="190" height="56" rx="10"/>
+        <text class="t" x="561" y="64">Redis</text><text class="d" x="561" y="84">cache, rate limits</text>
+        <rect class="store" x="545" y="112" width="190" height="56" rx="10"/>
+        <text class="t" x="561" y="136">MySQL</text><text class="d" x="561" y="156">primary data</text>
+        <rect class="store" x="545" y="184" width="190" height="56" rx="10"/>
+        <text class="t" x="561" y="208">Kafka</text><text class="d" x="561" y="228">bulk data topics</text>
+        <rect class="store" x="545" y="256" width="190" height="56" rx="10"/>
+        <text class="t" x="561" y="280">AWS SQS</text><text class="d" x="561" y="300">Celery broker</text>
+
+        <!-- right column -->
+        <rect class="box" x="800" y="40" width="190" height="56" rx="10"/>
+        <text class="t" x="816" y="64">Third-party APIs</text><text class="d" x="816" y="84">payments, partners</text>
+        <rect class="box" x="800" y="322" width="190" height="56" rx="10"/>
+        <text class="t" x="816" y="346">OpenSearch</text><text class="d" x="816" y="366">audit trail dashboard</text>
+        <rect class="box" x="800" y="184" width="190" height="56" rx="10"/>
+        <text class="t" x="816" y="208">Kafka consumers</text><text class="d" x="816" y="228">bulk processing</text>
+        <rect class="box" x="800" y="256" width="190" height="56" rx="10"/>
+        <text class="t" x="816" y="280">Celery workers</text><text class="d" x="816" y="300">scheduled, background</text>
+
+        <!-- wires -->
+        <path class="w" d="M180 106H236" marker-end="url(#ah)"/>
+        <path class="w" d="M180 286H236" marker-end="url(#ah)"/>
+        <path class="w" d="M480 68H541" marker-end="url(#ah)"/>
+        <path class="w" d="M480 140H541" marker-end="url(#ah)"/>
+        <path class="w" d="M480 212H541" marker-end="url(#ah)"/>
+        <path class="w" d="M480 284H541" marker-end="url(#ah)"/>
+        <path class="w" d="M735 212H796" marker-end="url(#ah)"/>
+        <path class="w" d="M735 284H796" marker-end="url(#ah)"/>
+        <path class="w dash" d="M400 40V18H895V36" marker-end="url(#ah)"/>
+        <path class="w dash" d="M480 350H796" marker-end="url(#ah)"/>
+
+        <!-- platform base -->
+        <rect class="base" x="10" y="420" width="980" height="62" rx="10"/>
+        <text class="t" x="30" y="447">Platform</text>
+        <text class="d" x="30" y="468">Docker on AWS EKS and EC2, files on S3, CI/CD with Jenkins, monitored with Prometheus and Grafana</text>
+      </svg>
+    </div>
+    <p class="diagram-note">Dashed lines are calls that leave the service boundary: outbound calls to partners, and audit events written to OpenSearch.</p>
+  </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="block">
+  <div class="wrap">
+    <div class="sec-head"><h2>Projects</h2><p>Things I've built outside of work.</p></div>
+    <div class="projects">
+      <article class="project">
+        <div class="project-kind">Web app</div>
+        <h3>TaskMate</h3>
+        <p class="pitch">A full-stack task manager for planning and tracking daily work.</p>
+        <ul>
+          <li>REST API in Django REST Framework with full CRUD for tasks.</li>
+          <li>JWT authentication and filtering by status and due date.</li>
+          <li>JavaScript frontend, SQLite for local development, Git for version control.</li>
+        </ul>
+        <div class="chips"><span class="chip">Python</span><span class="chip">Django REST</span><span class="chip">JWT</span><span class="chip">SQLite</span><span class="chip">JavaScript</span></div>
+      </article>
+      <article class="project">
+        <div class="project-kind">Android app</div>
+        <h3>Discover</h3>
+        <p class="pitch">A campus social platform for sharing blogs, photos and videos about college events.</p>
+        <ul>
+          <li>Student and admin roles, with content created, reviewed and approved before it goes live.</li>
+          <li>Firebase for real-time sync, storage and user authentication.</li>
+          <li>Modular architecture with interfaces built in XML layouts.</li>
+        </ul>
+        <div class="chips"><span class="chip">Android</span><span class="chip">Java</span><span class="chip">Firebase</span><span class="chip">XML</span></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Education -->
+<section id="education" class="block">
+  <div class="wrap">
+    <div class="sec-head"><h2>Education</h2><p></p></div>
+    <div class="indent">
+      <div class="edu">
+        <div class="edu-item">
+          <div class="years">2023 – 2025</div>
+          <h3>Master of Computer Applications</h3>
+          <div class="school">Vivekanand Education Society's Institute of Technology, Chembur</div>
+          <div class="grade">CGPI 8.34</div>
+        </div>
+        <div class="edu-item">
+          <div class="years">2019 – 2022</div>
+          <h3>B.Sc. Information Technology</h3>
+          <div class="school">Vikas College of Arts, Commerce and Science, Vikhroli</div>
+          <div class="grade">CGPA 8.57</div>
+        </div>
+      </div>
+      <p class="lead-note"><b>Student Placement Coordinator</b> at VESIT, connecting classmates with recruiters during placement season.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="block contact">
+  <div class="wrap">
+    <div class="sec-head"><h2>Let's talk</h2><p>Open to backend roles and interesting problems in Python, distributed systems and fintech. I usually reply within a day.</p></div>
+    <div class="contact-grid">
+      <ul class="direct">
+        <li><small>Email</small><a href="mailto:shreevmane@gmail.com">shreevmane@gmail.com</a></li>
+        <li><small>Phone</small><a href="tel:+918454074672">+91 84540 74672</a></li>
+        <li><small>LinkedIn</small><a href="https://linkedin.com/in/shree-mane" target="_blank" rel="noopener">in/shree-mane</a></li>
+        <li><small>GitHub</small><a href="https://github.com/shreemane" target="_blank" rel="noopener">shreemane</a></li>
+        <li><small>Resume</small><a href="SDE1_Shreekrushanaprasad_Mane%20(1)%20(1).pdf" download="Shreekrushanaprasad_Mane_Resume.pdf">Download PDF</a></li>
+      </ul>
+      <form id="contact-form" novalidate>
+        <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field full"><label for="subject">Subject</label><input id="subject" name="subject" required></div>
+        <div class="field full"><label for="message">Message</label><textarea id="message" name="message" required></textarea></div>
+        <div class="form-foot">
+          <button type="submit" class="btn btn-primary" id="send-btn">Send message</button>
+          <span class="form-status" id="form-status" role="status" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> Shreekrushanaprasad Mane</span>
+    <a href="#home">Back to top</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const header = document.getElementById('top');
+  addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 8), {passive:true});
+
+  const menuBtn = document.querySelector('.menu-btn');
+  const links = document.getElementById('nav-links');
+  const closeMenu = () => { links.classList.remove('open'); menuBtn.setAttribute('aria-expanded', false); menuBtn.textContent = 'Menu'; };
+  menuBtn.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+    menuBtn.textContent = open ? 'Close' : 'Menu';
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  const navMap = {};
+  links.querySelectorAll('a').forEach(a => navMap[a.getAttribute('href').slice(1)] = a);
+  const sectionObserver = new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting) {
+      Object.values(navMap).forEach(a => a.classList.remove('active'));
+      if (navMap[e.target.id]) navMap[e.target.id].classList.add('active');
+    }
+  }), {rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+</script>
+<script>
+  // Hero: type out the JSON response once
+  (function(){
+    const tokens = [
+      ['p','{\n'],
+      ['k','  "name"'],['p',': '],['s','"Shreekrushanaprasad Mane"'],['p',',\n'],
+      ['k','  "role"'],['p',': '],['s','"Jr. Backend Developer"'],['p',',\n'],
+      ['k','  "company"'],['p',': '],['s','"GrayQuest Finance"'],['p',',\n'],
+      ['k','  "location"'],['p',': '],['s','"Mumbai, IN"'],['p',',\n'],
+      ['k','  "stack"'],['p',': ['],['s','"Python"'],['p',', '],['s','"Django REST"'],['p',', '],['s','"FastAPI"'],['p',',\n            '],
+        ['s','"Kafka"'],['p',', '],['s','"Redis"'],['p',', '],['s','"Celery"'],['p',', '],['s','"AWS"'],['p','],\n'],
+      ['k','  "owns"'],['p',': '],['s','"Admin backend, 50+ APIs"'],['p',',\n'],
+      ['k','  "impact"'],['p',': {\n'],
+      ['k','    "response_time_ms"'],['p',': { '],['k','"before"'],['p',': '],['n','800'],['p',', '],['k','"after"'],['p',': '],['n','120'],['p',' },\n'],
+      ['k','    "bulk_jobs"'],['p',': '],['s','"80% faster"'],['p',',\n'],
+      ['k','    "uptime"'],['p',': '],['s','"99.5%"'],['p',',\n'],
+      ['k','    "downtime_incidents"'],['p',': '],['s','"-50%"'],['p','\n  },\n'],
+      ['k','  "open_to_conversations"'],['p',': '],['n','true'],['p','\n}']
+    ];
+    const pre = document.getElementById('api-body');
+    const status = document.getElementById('api-status');
+    const time = document.getElementById('api-time');
+    const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+    const render = n => {
+      let html = '', left = n;
+      for (const [cls, txt] of tokens) {
+        if (left <= 0) break;
+        const part = txt.slice(0, left); left -= part.length;
+        html += `<span class="${cls}">${esc(part)}</span>`;
+      }
+      return html;
+    };
+    const total = tokens.reduce((a,[,t]) => a + t.length, 0);
+    const done = () => { pre.innerHTML = render(total); status.classList.add('on'); time.textContent = 'time: 120 ms'; };
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) return done();
+    let i = 0;
+    setTimeout(() => {
+      const tick = () => {
+        i += 4;
+        if (i >= total) return done();
+        pre.innerHTML = render(i) + '<span class="caret"></span>';
+        requestAnimationFrame(tick);
+      };
+      tick();
+    }, 350);
+  })();
+</script>
+<script>
+  // Contact form via EmailJS
+  (function(){
+    const ready = typeof emailjs !== 'undefined';
+    if (ready) emailjs.init('yxp0oOmFZo3tu76iT');
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    const btn = document.getElementById('send-btn');
+    const set = (msg, cls) => { status.textContent = msg; status.className = 'form-status ' + (cls||''); };
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      const v = id => form.elements[id].value.trim();
+      if (!v('name') || !v('email') || !v('subject') || !v('message')) return set('Fill in all four fields to send.', 'err');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email'))) return set('Check the email address. It should look like name@example.com.', 'err');
+      if (!ready) return set('The form is unavailable right now. Email me at shreevmane@gmail.com.', 'err');
+
+      btn.disabled = true; btn.textContent = 'Sending…'; set('');
+      emailjs.send('Portfolio', 'template_p1pk99m', {
+        from_name: v('name'), from_email: v('email'), subject: v('subject'), message: v('message')
+      }).then(() => {
+        form.reset(); set('Message sent. I\'ll reply to your email soon.', 'ok');
+      }, () => {
+        set('Message not sent. Email me directly at shreevmane@gmail.com.', 'err');
+      }).finally(() => { btn.disabled = false; btn.textContent = 'Send message'; });
+    });
+  })();
+</script>
 </body>
 </html>
